@@ -27,8 +27,18 @@ async function playChord(name, time = 0.25) {
 
 async function start() {
   ctx = new AudioContext();
+  let current = 'C';
+  let next = {
+    'C': ['F', 'G', 'Am'],
+    'F': ['C', 'Dm', 'Em', 'Am'],
+    'G': ['Am', 'C'],
+    'Am': ['F', 'G', 'Em'],
+    'Dm': ['G', 'Em', 'Am'],
+    'Em': ['Am']
+  }
   while (true) {
-    let name = prompt('化合物');
-    await playChord(name);
+    await playChord(current);
+    let opts = next[current];
+    current = opts[Math.floor(Math.random() * opts.length)];
   }
 }
