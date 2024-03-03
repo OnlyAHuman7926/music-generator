@@ -44,3 +44,12 @@ async function start() {
     current = opts[Math.floor(Math.random() * opts.length)];
   }
 }
+document.querySelectorAll('.label').forEach(e => {
+  let text = "";
+  for (let i = 0; i < 3; i++) {
+    let start = 0x4e00, end = 0x5500;
+    let rand = Math.floor(Math.random() * (end - start + 1)) + start;
+    text += String.fromCharCode(rand);
+  }
+  e.innerHTML = text;
+})
